@@ -69,8 +69,8 @@ namespace Edmonds_Karp_UnitTest1
 			int *currentPathCapacity = new int[6];
 
 			vector<vector<int>> graph(6);
-
-			Assert::AreEqual(edmondsKarp(0, 5, parentsList, flowPassed, check, graph, currentPathCapacity, 6), 8);
+			int maxcap = edmondsKarp(0, 5, parentsList, flowPassed, check, graph, currentPathCapacity, 6);
+			Assert::AreEqual(maxcap, 8);
 		}
 
 		

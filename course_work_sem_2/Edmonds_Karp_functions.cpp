@@ -57,7 +57,7 @@ int **create_graph_matrix(map<string> vertex, vector< vector<int>> &graph)
 		found = buf.find('\n');
 		matrix[column][row] = stoi(buf.substr(0, found));
 		graph[column].push_back(row);
-		graph[row].push_back(column);
+		//graph[row].push_back(column);
 		
 	} while (!fin.eof());
 

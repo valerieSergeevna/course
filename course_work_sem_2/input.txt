@@ -1,9 +1,8 @@
-S A 4
-S C 6
-C A 7
-A B 5
-B A 2
-C D 3
-B D 4
-D T 4
-B T 6
+S O 3
+S P 3
+O Q 3
+O P 2
+P R 2
+Q R 4
+Q T 2
+R T 3
