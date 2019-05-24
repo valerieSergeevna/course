@@ -107,9 +107,10 @@ int BFS_(int startNode, int endNode, int *parentsList, int **flowPassed, int **c
 	return 0;
 }
 
-int edmondsKarp(int startNode, int endNode, int *parentsList,int **flowPassed,int **capacities, vector< vector<int>>&graph, int*currentPathCapacity,size_t size)
+int edmondsKarp(int startNode, int endNode, int *parentsList, int **flowPassed, int **capacities, vector< vector<int>>&graph, int*currentPathCapacity, size_t size)
 {
-
+	if ((size == 1) || (size == 0) || (endNode != size-1) || (startNode != 0)) 
+		throw out_of_range("error");
 	for (int i = 0; i < size; i++)
 		for (int j = 0; j < size; j++)
 			flowPassed[i][j] = 0;
@@ -137,4 +138,35 @@ int edmondsKarp(int startNode, int endNode, int *parentsList,int **flowPassed,in
 int find_id(map<string> vertex, string ver)
 {
 	{ return vertex.find_id(ver); }
+}
+bool IsConnect(int startNode, int endNode, vector< vector<int>>&graph,  size_t size)
+{
+	
+	int s = 0; // начальная вершина
+
+	queue<int> q(size); // очередь с вершинами, которые мы рассматриваем на данном этапе
+	q.push(startNode);
+	vector<bool> used(size); // логический массив, указывающий, посещена ли вершина
+	used[s] = true;
+	while (!q.empty()) // пока мы не обойдем все вершины, которые можно достигнуть из данной
+	{
+		int v = q.front();
+		q.pop(); // достаем из головы очереди одну вершину
+		for (size_t i = 0; i < graph[v].size(); ++i) //просмотрим все ребра, исходящие из данной вершины
+		{
+			int to = graph[v][i];
+			if (!used[to]) // если текущая вершина еще не была посещена
+			{
+				used[to] = true; //отмечаем, что мы ее посетили
+				q.push(to); // помещаем в очередь
+			}
+		}
+	}
+	vector<bool>::iterator it;
+	it = find(used.begin(), used.end(), false); // проверяем, остались ли еще непосещенные вершины
+	if (it == used.end())
+		return true; // если все вершины посещены, то граф связный
+	else
+		return false;
+
 }

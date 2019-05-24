@@ -11,3 +11,4 @@ int** create_graph_matrix(map<string>, vector< vector<int>>&);
 //int BFS_(int , int , int *, int **, int **, vector<int> *, int*, size_t );
 int edmondsKarp(int startNode, int endNode, int *parentsList, int **flowPassed, int **capacities, vector< vector<int>> &graph, int*currentPathCapacity, size_t size);
 int find_id(map<string> vertex, string ver);
+bool IsConnect(int startNode, int endNode, vector< vector<int>>&graph,  size_t size);
